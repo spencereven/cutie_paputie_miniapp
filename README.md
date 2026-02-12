@@ -1,1 +1,1 @@
-# cutipe_paputie_miniapp
+# cutie_paputie_miniapp
