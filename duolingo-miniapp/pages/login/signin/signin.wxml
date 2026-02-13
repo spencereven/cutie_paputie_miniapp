@@ -1,0 +1,59 @@
+<!-- Login Flow 3: Sign In - 输入凭证登录 -->
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="top-bar">
+    <text class="back-btn" bindtap="handleBack">←</text>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <view class="content">
+    <!-- 标题 -->
+    <text class="page-title">Sign in</text>
+
+    <!-- 邮箱和密码输入框 -->
+    <view class="form-section">
+      <input-card
+        type="email"
+        placeholder="Email or username"
+        value="{{email}}"
+        type2="password"
+        placeholder2="Password"
+        value2="{{password}}"
+        hasDivider="{{true}}"
+        bind:change="handleInputChange"
+      ></input-card>
+    </view>
+
+    <!-- 忘记密码链接 -->
+    <text class="forgot-password" bindtap="handleForgotPassword">Forgot password?</text>
+
+    <!-- 登录按钮 -->
+    <view class="btn btn-primary" bindtap="handleSignIn">
+      <text class="btn-text">SIGN IN</text>
+    </view>
+
+    <!-- 分割线 -->
+    <view class="divider">
+      <text class="divider-text">or</text>
+    </view>
+
+    <!-- 第三方登录按钮 -->
+    <view class="social-login">
+      <view class="social-btn" bindtap="handleGoogleLogin">
+        <text class="social-icon">微</text>
+      </view>
+      <view class="social-btn" bindtap="handleFacebookLogin">
+        <text class="social-icon">f</text>
+      </view>
+      <view class="social-btn" bindtap="handleAppleLogin">
+        <text class="social-icon">🍎</text>
+      </view>
+    </view>
+
+    <!-- 没有账户 -->
+    <view class="signup-prompt">
+      <text class="signup-text">Don't have an account?</text>
+      <text class="signup-link" bindtap="handleSignUp">SIGN UP</text>
+    </view>
+  </view>
+</view>

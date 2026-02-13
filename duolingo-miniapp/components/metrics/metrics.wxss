@@ -1,0 +1,49 @@
+/* 顶部指标组件样式 */
+
+.metrics-wrapper {
+  width: 100%;
+  padding: 16px 12px;
+  background-color: #ffffff;
+}
+
+.metric-group {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.metric-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.metric-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.metric-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444444;
+  line-height: 1;
+}
+
+/* 响应式 */
+@media (max-width: 375px) {
+  .metrics-wrapper {
+    padding: 12px 8px;
+  }
+
+  .metric-group {
+    gap: 12px;
+  }
+
+  .metric-value {
+    font-size: 12px;
+  }
+}

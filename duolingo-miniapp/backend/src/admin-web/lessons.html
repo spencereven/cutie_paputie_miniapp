@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duolingo Admin - Lessons</title>
+  <link rel="stylesheet" href="/admin/styles.css">
+</head>
+<body data-page="lessons">
+  <main class="layout">
+    <header class="topbar card">
+      <div>
+        <h2>Lesson Management</h2>
+        <p class="muted">
+          <span id="userName">-</span>
+          <span class="role-pill" id="userRole">-</span>
+        </p>
+      </div>
+      <div class="actions">
+        <button id="reloadBtn" class="secondary">Reload</button>
+        <button id="logoutBtn" class="danger">Logout</button>
+      </div>
+    </header>
+
+    <nav class="card page-nav">
+      <a href="/admin/dashboard" data-nav="dashboard">Dashboard</a>
+      <a href="/admin/classrooms" data-nav="classrooms">Classrooms</a>
+      <a href="/admin/lessons" data-nav="lessons">Lessons</a>
+      <a href="/admin/uploads" data-nav="uploads">Uploads</a>
+    </nav>
+
+    <div id="notice" class="card notice hidden"></div>
+    <div id="statusBar" class="status hidden"></div>
+
+    <section id="managerContent">
+      <article class="card workspace-card">
+        <h3>Workspace</h3>
+        <div class="workspace-grid">
+          <div>
+            <label>Campus</label>
+            <select id="campusSelect"></select>
+          </div>
+          <div>
+            <label>Managed Class</label>
+            <select id="classSelect"></select>
+          </div>
+          <div class="workspace-action">
+            <button id="refreshClassesBtn" class="secondary">Refresh</button>
+          </div>
+        </div>
+      </article>
+
+      <section class="panel-grid">
+        <article class="card">
+          <h3>Create Lesson</h3>
+          <label>Title</label>
+          <input id="createLessonTitle" placeholder="Lesson 1 - Greetings">
+          <label>Status</label>
+          <select id="createLessonStatus">
+            <option value="PUBLISHED">PUBLISHED</option>
+            <option value="DRAFT">DRAFT</option>
+            <option value="ARCHIVED">ARCHIVED</option>
+          </select>
+          <label>Description</label>
+          <textarea id="createLessonDesc" rows="3" placeholder="Lesson notes..."></textarea>
+          <label>Cover URL (optional)</label>
+          <input id="createLessonCoverUrl" placeholder="https://.../cover.jpg">
+          <button id="createLessonBtn">Create Lesson</button>
+        </article>
+
+        <article class="card full">
+          <h3>Lessons</h3>
+          <ul id="lessonsList" class="list"></ul>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="/admin/app.js"></script>
+</body>
+</html>

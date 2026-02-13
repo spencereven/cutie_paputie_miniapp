@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Duolingo",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "account-card": "/components/account-card/account-card"
+  }
+}

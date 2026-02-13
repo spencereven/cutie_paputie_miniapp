@@ -1,0 +1,91 @@
+<!-- Audio Player -->
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="top-bar">
+    <text class="back-btn" bindtap="handleBack">←</text>
+    <text class="title">{{audioName}}</text>
+    <view class="spacer"></view>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <view class="content">
+    <!-- 音频可视化 -->
+    <view class="visualizer">
+      <view class="wave" wx:for="{{[1,2,3,4,5,6,7,8,9,10]}}" wx:key="*this" 
+            style="animation-delay: {{item * 0.1}}s"></view>
+    </view>
+
+    <!-- 音频信息 -->
+    <view class="audio-info">
+      <text class="audio-title">{{audioTitle}}</text>
+      <text class="audio-subtitle">Pronunciation Practice</text>
+    </view>
+
+    <!-- 进度条 -->
+    <view class="progress-section">
+      <view class="time">{{currentTime}}</view>
+      <view class="progress-bar" bindtap="handleProgressTap">
+        <view class="progress-fill" style="width: {{progress}}%"></view>
+        <view class="progress-thumb" style="left: {{progress}}%"></view>
+      </view>
+      <view class="time">{{duration}}</view>
+    </view>
+
+    <!-- 播放控制 -->
+    <view class="controls">
+      <view class="control-btn speed-btn" bindtap="handleChangeSpeed">
+        <text class="control-icon">🐢</text>
+        <text class="control-label">{{speedLabel}}</text>
+      </view>
+      
+      <view class="control-btn" bindtap="handlePlayPause">
+        <text class="control-icon">{{isPlaying ? '⏸' : '▶'}}</text>
+      </view>
+
+      <view class="control-btn download-btn" bindtap="handleDownload">
+        <text class="control-icon">⬇</text>
+        <text class="control-label">Download</text>
+      </view>
+    </view>
+
+    <!-- 音频信息 -->
+    <view class="info-section">
+      <text class="section-title">Information</text>
+      <view class="info-item">
+        <text class="info-label">File Size</text>
+        <text class="info-value">{{fileSize}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">Duration</text>
+        <text class="info-value">{{duration}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">Bitrate</text>
+        <text class="info-value">128 kbps</text>
+      </view>
+    </view>
+
+    <!-- 相关内容 -->
+    <view class="related-section">
+      <text class="section-title">Related Exercises</text>
+      <view class="related-list">
+        <view class="related-item" bindtap="handleRelated" data-id="1">
+          <text class="related-number">01</text>
+          <view class="related-info">
+            <text class="related-name">Speaking Practice 1</text>
+            <text class="related-meta">12 min</text>
+          </view>
+          <text class="related-arrow">›</text>
+        </view>
+        <view class="related-item" bindtap="handleRelated" data-id="2">
+          <text class="related-number">02</text>
+          <view class="related-info">
+            <text class="related-name">Listening Exercise 1</text>
+            <text class="related-meta">15 min</text>
+          </view>
+          <text class="related-arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

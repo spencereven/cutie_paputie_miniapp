@@ -1,0 +1,10 @@
+<!-- 单元横幅组件 -->
+<view class="banner-container theme-{{colorTheme}}">
+  <view class="banner-content">
+    <text class="banner-label">{{sectionLabel}}</text>
+    <text class="banner-title">{{title}}</text>
+  </view>
+  <view class="banner-action" bindtap="handleBannerAction">
+    <text class="banner-icon">≡</text>
+  </view>
+</view>

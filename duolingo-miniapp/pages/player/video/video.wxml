@@ -1,0 +1,52 @@
+<view class="page">
+  <view class="top-bar">
+    <text class="back-btn" bindtap="handleBack">←</text>
+    <text class="video-title">{{videoName}}</text>
+    <view class="spacer"></view>
+  </view>
+
+  <view class="video-container">
+    <video
+      id="videoPlayer"
+      class="video-player"
+      src="{{videoUrl}}"
+      controls="{{true}}"
+      autoplay="{{false}}"
+      show-center-play-btn="{{true}}"
+      bindtimeupdate="handleTimeUpdate"
+      bindwaiting="handleWaiting"
+      bindloadedmetadata="handleLoadedMetadata"
+      bindcanplay="handleCanPlay"
+      bindended="handleVideoEnded"
+      binderror="handleVideoError"
+    ></video>
+    <view class="state-overlay" wx:if="{{loading}}">加载中...</view>
+  </view>
+
+  <view class="error-box" wx:if="{{errorText}}">
+    <text>{{errorText}}</text>
+  </view>
+
+  <view class="info-section">
+    <view class="info-item">
+      <text class="info-label">Duration</text>
+      <text class="info-value">{{duration}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">Size</text>
+      <text class="info-value">{{fileSize}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">Progress</text>
+      <text class="info-value">{{progressText}}</text>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="action-btn" bindtap="handleChangeSpeed">
+      {{playbackRateLabel}}
+    </button>
+    <button class="action-btn" bindtap="handleRetry">Retry</button>
+    <button class="action-btn" bindtap="handleCopyLink">Copy Link</button>
+  </view>
+</view>

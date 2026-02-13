@@ -1,0 +1,279 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+enum LeaderboardScopeType {
+  CLASS
+  CAMPUS
+  NATIONAL
+}
+
+enum LessonStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum LessonAssetType {
+  FILE
+  AUDIO
+  VIDEO
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String?   @unique
+  passwordHash  String?   @map("password_hash")
+  name          String
+  role          UserRole  @default(STUDENT)
+  birthday      DateTime?
+  avatarUrl     String?   @map("avatar_url")
+  wechatOpenid  String?   @unique @map("wechat_openid")
+  wechatUnionid String?   @map("wechat_unionid")
+  classroomId   Int?      @map("classroom_id")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  classroom        Classroom?            @relation("ClassStudents", fields: [classroomId], references: [id], onDelete: SetNull)
+  managedClasses   Classroom[]           @relation("ClassTeacher")
+  createdLessons   Lesson[]              @relation("LessonCreator")
+  uploadedAssets   LessonAsset[]         @relation("AssetUploader")
+  adminActionLogs  AdminActionLog[]      @relation("AdminActionLogActor")
+  sessions         UserSession[]
+  progressRecords  UserProgress[]
+  achievementLinks UserAchievement[]
+  leaderboardRows  LeaderboardSnapshot[]
+
+  @@index([classroomId])
+  @@map("users")
+}
+
+model AdminActionLog {
+  id         Int      @id @default(autoincrement())
+  actorUserId String?  @map("actor_user_id")
+  actorRole  UserRole? @map("actor_role")
+  action     String
+  targetType String   @map("target_type")
+  targetId   String?  @map("target_id")
+  detailJson Json?    @map("detail_json")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  actor User? @relation("AdminActionLogActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+  @@index([actorUserId, createdAt])
+  @@index([action, createdAt])
+  @@map("admin_action_logs")
+}
+
+model UserSession {
+  id               String   @id @default(cuid())
+  userId           String   @map("user_id")
+  refreshTokenHash String   @map("refresh_token_hash")
+  expiresAt        DateTime @map("expires_at")
+  deviceInfo       String?  @map("device_info")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_sessions")
+}
+
+model Campus {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  city      String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  classes         Classroom[]
+  leaderboardRows LeaderboardSnapshot[]
+
+  @@map("campuses")
+}
+
+model Classroom {
+  id               Int      @id @default(autoincrement())
+  name             String
+  code             String?  @unique
+  campusId         Int      @map("campus_id")
+  managerTeacherId String?  @map("manager_teacher_id")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  campus          Campus                @relation(fields: [campusId], references: [id], onDelete: Restrict)
+  managerTeacher  User?                 @relation("ClassTeacher", fields: [managerTeacherId], references: [id], onDelete: SetNull)
+  students        User[]                @relation("ClassStudents")
+  lessons         Lesson[]
+  leaderboardRows LeaderboardSnapshot[]
+
+  @@unique([campusId, name])
+  @@index([managerTeacherId])
+  @@map("classes")
+}
+
+model Lesson {
+  id            Int          @id @default(autoincrement())
+  classroomId   Int          @map("classroom_id")
+  title         String
+  description   String?
+  coverImageUrl String?      @map("cover_image_url")
+  orderIndex    Int          @default(0) @map("order_index")
+  status        LessonStatus @default(DRAFT)
+  createdById   String       @map("created_by_id")
+  publishedAt   DateTime?    @map("published_at")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+
+  classroom Classroom     @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  createdBy User          @relation("LessonCreator", fields: [createdById], references: [id], onDelete: Restrict)
+  assets    LessonAsset[]
+
+  @@index([classroomId, status, orderIndex])
+  @@index([createdById, createdAt])
+  @@map("lessons")
+}
+
+model LessonAsset {
+  id            Int             @id @default(autoincrement())
+  lessonId      Int             @map("lesson_id")
+  type          LessonAssetType
+  title         String
+  url           String
+  durationSec   Int?            @map("duration_sec")
+  fileSizeBytes Int?            @map("file_size_bytes")
+  mimeType      String?         @map("mime_type")
+  sortOrder     Int             @default(0) @map("sort_order")
+  uploadedById  String?         @map("uploaded_by_id")
+  createdAt     DateTime        @default(now()) @map("created_at")
+
+  lesson     Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  uploadedBy User?  @relation("AssetUploader", fields: [uploadedById], references: [id], onDelete: SetNull)
+
+  @@index([lessonId, type, sortOrder])
+  @@index([uploadedById])
+  @@map("lesson_assets")
+}
+
+model Section {
+  id        Int      @id @default(autoincrement())
+  title     String
+  subtitle  String?
+  sortOrder Int      @default(0) @map("sort_order")
+  isLocked  Boolean  @default(false) @map("is_locked")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  levels   Level[]
+  progress UserProgress[]
+
+  @@map("sections")
+}
+
+model Level {
+  id        Int     @id @default(autoincrement())
+  sectionId Int     @map("section_id")
+  title     String
+  subtitle  String?
+  type      String
+  sortOrder Int     @default(0) @map("sort_order")
+
+  section  Section        @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  progress UserProgress[]
+
+  @@map("levels")
+}
+
+model UserProgress {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  sectionId Int      @map("section_id")
+  levelId   Int      @map("level_id")
+  status    String   @default("not_started")
+  score     Int      @default(0)
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  section Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  level   Level   @relation(fields: [levelId], references: [id], onDelete: Cascade)
+
+  @@index([userId, sectionId])
+  @@map("user_progress")
+}
+
+model Course {
+  id        Int      @id @default(autoincrement())
+  title     String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  materials Material[]
+
+  @@map("courses")
+}
+
+model Material {
+  id       Int     @id @default(autoincrement())
+  courseId Int     @map("course_id")
+  type     String
+  title    String
+  url      String
+  duration String?
+  size     String?
+
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@map("materials")
+}
+
+model Achievement {
+  id          Int      @id @default(autoincrement())
+  name        String
+  icon        String?
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  userLinks UserAchievement[]
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String   @id @default(cuid())
+  userId        String   @map("user_id")
+  achievementId Int      @map("achievement_id")
+  unlockedAt    DateTime @default(now()) @map("unlocked_at")
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+model LeaderboardSnapshot {
+  id           String               @id @default(cuid())
+  scopeType    LeaderboardScopeType @map("scope_type")
+  userId       String               @map("user_id")
+  classroomId  Int?                 @map("classroom_id")
+  campusId     Int?                 @map("campus_id")
+  studyHours   Int                  @default(0) @map("study_hours")
+  rank         Int
+  snapshotDate DateTime             @map("snapshot_date")
+
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  classroom Classroom? @relation(fields: [classroomId], references: [id], onDelete: SetNull)
+  campus    Campus?    @relation(fields: [campusId], references: [id], onDelete: SetNull)
+
+  @@index([scopeType, snapshotDate, rank])
+  @@index([scopeType, classroomId, snapshotDate, rank])
+  @@index([scopeType, campusId, snapshotDate, rank])
+  @@map("leaderboard_snapshots")
+}

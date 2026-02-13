@@ -1,0 +1,69 @@
+<!-- Interactive Lesson Player -->
+<view class="page">
+  <!-- 顶部进度条 -->
+  <view class="top-bar">
+    <view class="progress-container">
+      <text class="lesson-number">{{currentQuestion + 1}}/{{totalQuestions}}</text>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{(currentQuestion + 1) / totalQuestions * 100}}%"></view>
+      </view>
+    </view>
+    <text class="close-btn" bindtap="handleQuit">✕</text>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- 问题区域 -->
+    <view class="question-section">
+      <text class="question-number">Question {{currentQuestion + 1}}</text>
+      <text class="question-text">{{currentLesson.question}}</text>
+      <text class="question-hint" wx:if="{{currentLesson.hint}}">💡 {{currentLesson.hint}}</text>
+    </view>
+
+    <!-- 音频播放 -->
+    <view class="audio-section" wx:if="{{currentLesson.audioUrl}}">
+      <view class="audio-player" bindtap="handlePlayAudio">
+        <text class="audio-icon">🔊</text>
+        <text class="audio-text">Listen</text>
+      </view>
+    </view>
+
+    <!-- 答案选项 -->
+    <view class="answers-section" wx:if="{{!answered}}">
+      <view class="answer-option {{selectedAnswer === index ? 'selected' : ''}}" 
+            wx:for="{{currentLesson.options}}" 
+            wx:key="index"
+            bindtap="handleSelectAnswer"
+            data-index="{{index}}">
+        <view class="answer-letter">{{String.fromCharCode(65 + index)}}</view>
+        <text class="answer-text">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 结果反馈 -->
+    <view class="feedback-section" wx:if="{{answered}}">
+      <view class="feedback {{isCorrect ? 'correct' : 'incorrect'}}">
+        <text class="feedback-icon">{{isCorrect ? '✓' : '✗'}}</text>
+        <text class="feedback-text">{{isCorrect ? 'Correct!' : 'Incorrect!'}}</text>
+        <text class="feedback-description">{{feedbackMessage}}</text>
+      </view>
+      <view class="correct-answer" wx:if="{{!isCorrect}}">
+        <text class="correct-label">Correct answer:</text>
+        <text class="correct-text">{{currentLesson.options[currentLesson.correctAnswer]}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部按钮区域 -->
+  <view class="button-section">
+    <view class="btn btn-secondary" bindtap="handleSkip" wx:if="{{!answered}}">
+      <text class="btn-text">SKIP</text>
+    </view>
+    <view class="btn btn-secondary" wx:if="{{answered && !isLast}}" bindtap="handleNext">
+      <text class="btn-text">NEXT</text>
+    </view>
+    <view class="btn btn-primary" wx:if="{{answered && isLast}}" bindtap="handleFinish">
+      <text class="btn-text">FINISH</text>
+    </view>
+  </view>
+</view>

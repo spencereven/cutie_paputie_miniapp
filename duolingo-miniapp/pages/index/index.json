@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "Duolingo",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "unit-banner": "/components/unit-banner/unit-banner",
+    "level-card": "/components/level-card/level-card",
+    "section-card": "/components/section-card/section-card",
+    "bottom-nav": "/components/bottom-nav/bottom-nav"
+  }
+}

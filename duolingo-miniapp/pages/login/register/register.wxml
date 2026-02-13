@@ -1,0 +1,76 @@
+<!-- Login Flow 4: Register - 新用户注册 -->
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="top-bar">
+    <text class="back-btn" bindtap="handleBack">←</text>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <view class="content">
+    <!-- 标题 -->
+    <text class="page-title">Create account</text>
+
+    <!-- 邮箱和密码输入框 -->
+    <view class="form-section">
+      <!-- 名字输入框 -->
+      <input-card
+        type="text"
+        placeholder="Name"
+        value="{{name}}"
+        hasDivider="{{false}}"
+        bind:change="handleNameChange"
+      ></input-card>
+
+      <!-- 邮箱输入框 -->
+      <input-card
+        type="email"
+        placeholder="Email"
+        value="{{email}}"
+        hasDivider="{{false}}"
+        bind:change="handleEmailChange"
+      ></input-card>
+
+      <!-- 密码和确认密码 -->
+      <input-card
+        type="password"
+        placeholder="Password"
+        value="{{password}}"
+        type2="password"
+        placeholder2="Confirm password"
+        value2="{{confirmPassword}}"
+        hasDivider="{{true}}"
+        bind:change="handlePasswordChange"
+      ></input-card>
+    </view>
+
+    <!-- 生日选择 -->
+    <view class="birthday-section">
+      <text class="section-label">Date of birth</text>
+      <picker mode="date" value="{{birthday}}" start="1900-01-01" end="2099-12-31" bindchange="handleBirthdayChange">
+        <view class="birthday-input">
+          <text class="birthday-text {{birthday ? 'active' : ''}}">
+            {{birthday ? birthday : 'Select your birthday'}}
+          </text>
+          <text class="birthday-icon">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 条款提示 -->
+    <view class="terms-section">
+      <text class="terms-text">By creating an account, you agree to our </text>
+      <text class="terms-link" bindtap="handleViewTerms">Terms of Service</text>
+    </view>
+
+    <!-- 注册按钮 -->
+    <view class="btn btn-primary" bindtap="handleSignUp">
+      <text class="btn-text">CREATE ACCOUNT</text>
+    </view>
+
+    <!-- 已有账户 -->
+    <view class="signin-prompt">
+      <text class="signin-text">Already have an account?</text>
+      <text class="signin-link" bindtap="handleSignIn">SIGN IN</text>
+    </view>
+  </view>
+</view>

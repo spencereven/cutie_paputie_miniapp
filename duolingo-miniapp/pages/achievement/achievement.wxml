@@ -1,0 +1,45 @@
+<!-- 成就页面 -->
+<view class="page">
+  <view class="header">
+    <text class="title">成就</text>
+  </view>
+
+  <scroll-view class="content" scroll-y="true">
+    <!-- 统计卡片 -->
+    <view class="stats-grid">
+      <view class="stat-card">
+        <text class="stat-icon">🏆</text>
+        <text class="stat-value">7 天连胜</text>
+        <text class="stat-label">最高纪录</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-icon">🎯</text>
+        <text class="stat-value">156 课程</text>
+        <text class="stat-label">已完成</text>
+      </view>
+    </view>
+
+    <!-- 徽章区域 -->
+    <view class="badges-section">
+      <text class="section-title">成就徽章</text>
+      <view class="badges-grid">
+        <view class="badge" wx:for="{{badges}}" wx:key="id">
+          <text class="badge-icon" style="opacity: {{item.unlocked ? 1 : 0.3}}">{{item.icon}}</text>
+          <text class="badge-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 排行榜 -->
+    <view class="leaderboard-section">
+      <text class="section-title">周排行榜</text>
+      <view class="leaderboard">
+        <view class="leaderboard-item" wx:for="{{leaderboard}}" wx:key="rank">
+          <text class="rank">{{item.rank}}</text>
+          <text class="user-name">{{item.name}}</text>
+          <text class="user-points">{{item.points}} 分</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

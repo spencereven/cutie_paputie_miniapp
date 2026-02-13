@@ -1,0 +1,33 @@
+<!-- Section卡片组件 -->
+<view class="section-card {{hasTopContent ? 'with-top' : ''}} {{progress === 0 ? 'locked' : ''}}" bindtap="handleCardTap" data-id="{{sectionId ? sectionId : id}}">
+  <!-- 顶部内容区域 (可选) -->
+  <view wx:if="{{hasTopContent}}" class="section-top {{topBgColor}}">
+    <view class="section-bubble">
+      <text class="bubble-text">{{bubbleText}}</text>
+    </view>
+    <view wx:if="{{showCharacter}}" class="section-character">
+      <view class="character-avatar">{{characterIcon}}</view>
+    </view>
+  </view>
+
+  <!-- 底部信息区域 -->
+  <view class="section-bottom">
+    <view class="section-header">
+      <text class="section-title">{{title}}</text>
+      <view class="section-badge">
+        <text wx:if="{{badgeIcon}}" class="badge-icon">{{badgeIcon}}</text>
+        <text class="badge-text">{{badgeText}}</text>
+      </view>
+    </view>
+
+    <view class="section-progress">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progress}}%;"></view>
+      </view>
+    </view>
+
+    <view wx:if="{{jumpText}}" class="section-action">
+      <text class="action-text">{{jumpText}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+<!-- Account Card Component - 用于登录页面展示已保存账户 -->
+<view class="account-card {{isSelected ? 'selected' : ''}}" bindtap="handleCardTap">
+  <!-- 用户头像 -->
+  <view class="avatar-container">
+    <view class="avatar" style="background-color: {{avatarBg}}">
+      <text class="avatar-text">{{avatarInitial}}</text>
+    </view>
+  </view>
+
+  <!-- 用户信息 -->
+  <view class="info-container">
+    <text class="user-name">{{name}}</text>
+    <text class="user-email">{{email}}</text>
+  </view>
+
+  <!-- 右侧箭头指示器 -->
+  <view class="chevron-container">
+    <text class="chevron">›</text>
+  </view>
+</view>

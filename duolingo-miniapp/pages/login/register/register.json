@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Duolingo",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "input-card": "/components/input-card/input-card"
+  }
+}

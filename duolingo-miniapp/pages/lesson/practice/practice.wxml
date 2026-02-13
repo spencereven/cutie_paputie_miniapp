@@ -1,0 +1,90 @@
+<!-- Practice Mode -->
+<view class="page">
+  <!-- 顶部进度 -->
+  <view class="top-bar">
+    <view class="progress-section">
+      <text class="round-number">Round {{currentRound}}/{{totalRounds}}</text>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{(currentRound / totalRounds) * 100}}%"></view>
+      </view>
+    </view>
+    <text class="close-btn" bindtap="handleQuit">✕</text>
+  </view>
+
+  <!-- 主要内容 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- 练习类型标题 -->
+    <view class="exercise-header">
+      <text class="exercise-icon">{{currentExercise.icon}}</text>
+      <text class="exercise-type">{{currentExercise.type}}</text>
+    </view>
+
+    <!-- 翻译练习 -->
+    <view class="exercise-section" wx:if="{{currentExercise.type === 'Translation'}}">
+      <text class="instruction">{{currentExercise.instruction}}</text>
+      <view class="translation-box">
+        <text class="translation-text">{{currentExercise.original}}</text>
+      </view>
+      <view class="input-area">
+        <input class="answer-input" 
+               placeholder="Type the translation..."
+               value="{{userAnswer}}"
+               bindinput="handleAnswerInput" />
+      </view>
+    </view>
+
+    <!-- 选择练习 -->
+    <view class="exercise-section" wx:if="{{currentExercise.type === 'Multiple Choice'}}">
+      <text class="instruction">{{currentExercise.instruction}}</text>
+      <view class="options">
+        <view class="option {{selectedOption === index ? 'selected' : ''}}"
+              wx:for="{{currentExercise.options}}"
+              wx:key="index"
+              bindtap="handleOptionSelect"
+              data-index="{{index}}">
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 听力练习 -->
+    <view class="exercise-section" wx:if="{{currentExercise.type === 'Listening'}}">
+      <text class="instruction">{{currentExercise.instruction}}</text>
+      <view class="audio-play" bindtap="handlePlayAudio">
+        <text class="audio-icon">🔊</text>
+        <text class="audio-label">Play Audio</text>
+      </view>
+      <view class="options">
+        <view class="option {{selectedOption === index ? 'selected' : ''}}"
+              wx:for="{{currentExercise.options}}"
+              wx:key="index"
+              bindtap="handleOptionSelect"
+              data-index="{{index}}">
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 发音练习 -->
+    <view class="exercise-section" wx:if="{{currentExercise.type === 'Speaking'}}">
+      <text class="instruction">{{currentExercise.instruction}}</text>
+      <view class="speak-box">
+        <text class="speak-text">{{currentExercise.original}}</text>
+      </view>
+      <view class="record-btn {{isRecording ? 'recording' : ''}}" bindtap="handleRecord">
+        <text class="record-icon">🎤</text>
+        <text class="record-label">{{isRecording ? 'Recording...' : 'Tap to Record'}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部按钮 -->
+  <view class="button-area">
+    <view class="btn btn-secondary" bindtap="handleSkip">
+      <text class="btn-text">SKIP</text>
+    </view>
+    <view class="btn btn-primary" bindtap="handleSubmit">
+      <text class="btn-text">CHECK</text>
+    </view>
+  </view>
+</view>

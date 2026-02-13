@@ -1,0 +1,92 @@
+<view class="page">
+  <scroll-view class="container" scroll-y="true">
+    <view class="section-card">
+      <view class="section-title">Campus</view>
+      <picker
+        mode="selector"
+        range="{{campuses}}"
+        range-key="name"
+        value="{{campusIndex}}"
+        bindchange="handleCampusChange"
+      >
+        <view class="picker-value">
+          {{campuses.length ? campuses[campusIndex].name : 'No campus'}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="section-card">
+      <view class="section-title">Create Classroom</view>
+      <input
+        class="input"
+        placeholder="Class name (e.g. Class A3)"
+        value="{{newClassName}}"
+        bindinput="handleClassNameInput"
+      />
+      <input
+        class="input"
+        placeholder="Class code (optional)"
+        value="{{newClassCode}}"
+        bindinput="handleClassCodeInput"
+      />
+      <button class="btn primary" bindtap="handleCreateClassroom">Create</button>
+    </view>
+
+    <view class="section-card">
+      <view class="section-title">Managed Classrooms</view>
+      <picker
+        mode="selector"
+        range="{{managedClasses}}"
+        range-key="name"
+        value="{{classIndex}}"
+        bindchange="handleClassChange"
+      >
+        <view class="picker-value">
+          {{managedClasses.length ? managedClasses[classIndex].name : 'No classroom'}}
+        </view>
+      </picker>
+      <view class="sub-text" wx:if="{{managedClasses.length}}">
+        Students: {{managedClasses[classIndex].studentCount || 0}}
+      </view>
+    </view>
+
+    <view class="section-card">
+      <view class="section-title">Students In Class</view>
+      <view class="empty" wx:if="{{!classStudents.length}}">No students yet</view>
+      <view class="student-row" wx:for="{{classStudents}}" wx:key="id">
+        <text class="student-name">{{item.name}}</text>
+        <text class="student-email">{{item.email || '-'}}</text>
+      </view>
+    </view>
+
+    <view class="section-card">
+      <view class="section-title">Unassigned Students</view>
+      <view class="search-row">
+        <input
+          class="input search"
+          placeholder="Search name/email"
+          value="{{unassignedKeyword}}"
+          bindinput="handleKeywordInput"
+        />
+        <button class="btn small" bindtap="handleSearchStudents">Search</button>
+      </view>
+      <view class="empty" wx:if="{{!unassignedStudents.length}}">No unassigned students</view>
+      <view class="student-row" wx:for="{{unassignedStudents}}" wx:key="id">
+        <view class="student-info">
+          <text class="student-name">{{item.name}}</text>
+          <text class="student-email">{{item.email || item.id}}</text>
+        </view>
+        <button
+          class="btn small primary"
+          data-student-id="{{item.id}}"
+          bindtap="handleAssignStudent"
+        >
+          Assign
+        </button>
+      </view>
+    </view>
+
+    <button class="btn ghost" bindtap="handleRefreshAll">Refresh</button>
+    <view class="bottom-space"></view>
+  </scroll-view>
+</view>

@@ -1,0 +1,29 @@
+{
+  "name": "duolingo-miniapp-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Backend service for duolingo-miniapp",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "node prisma/seed.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.1",
+    "@fastify/jwt": "^9.1.0",
+    "@prisma/client": "^5.22.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "fastify": "^5.1.0",
+    "undici": "^7.13.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  }
+}

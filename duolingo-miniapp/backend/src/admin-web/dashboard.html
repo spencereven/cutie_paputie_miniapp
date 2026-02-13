@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duolingo Admin - Dashboard</title>
+  <link rel="stylesheet" href="/admin/styles.css">
+</head>
+<body data-page="dashboard">
+  <main class="layout">
+    <header class="topbar card">
+      <div>
+        <h2>Duolingo Admin Console</h2>
+        <p class="muted">
+          <span id="userName">-</span>
+          <span class="role-pill" id="userRole">-</span>
+        </p>
+      </div>
+      <div class="actions">
+        <button id="reloadBtn" class="secondary">Reload</button>
+        <button id="logoutBtn" class="danger">Logout</button>
+      </div>
+    </header>
+
+    <nav class="card page-nav">
+      <a href="/admin/dashboard" data-nav="dashboard">Dashboard</a>
+      <a href="/admin/classrooms" data-nav="classrooms">Classrooms</a>
+      <a href="/admin/lessons" data-nav="lessons">Lessons</a>
+      <a href="/admin/uploads" data-nav="uploads">Uploads</a>
+    </nav>
+
+    <div id="notice" class="card notice hidden"></div>
+    <div id="statusBar" class="status hidden"></div>
+
+    <section id="managerContent">
+      <article class="card workspace-card">
+        <h3>Workspace</h3>
+        <p class="muted">Select campus and class to refresh dashboard metrics.</p>
+        <div class="workspace-grid">
+          <div>
+            <label>Campus</label>
+            <select id="campusSelect"></select>
+          </div>
+          <div>
+            <label>Managed Class</label>
+            <select id="classSelect"></select>
+          </div>
+          <div class="workspace-action">
+            <button id="refreshClassesBtn" class="secondary">Refresh</button>
+          </div>
+        </div>
+      </article>
+
+      <section class="dashboard-grid">
+        <article class="card stat-card">
+          <h4>Campuses</h4>
+          <p id="dashboardCampusCount" class="stat-value">0</p>
+        </article>
+        <article class="card stat-card">
+          <h4>Managed Classes</h4>
+          <p id="dashboardClassCount" class="stat-value">0</p>
+        </article>
+        <article class="card stat-card">
+          <h4>Students (Current Class)</h4>
+          <p id="dashboardStudentCount" class="stat-value">0</p>
+        </article>
+        <article class="card stat-card">
+          <h4>Lessons (Current Class)</h4>
+          <p id="dashboardLessonCount" class="stat-value">0</p>
+        </article>
+      </section>
+
+      <article class="card">
+        <h3>Quick Actions</h3>
+        <div class="quick-links">
+          <a class="quick-link" href="/admin/classrooms">Manage classrooms and students</a>
+          <a class="quick-link" href="/admin/lessons">Create lessons and assets</a>
+          <a class="quick-link" href="/admin/uploads">Upload files and covers</a>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script src="/admin/app.js"></script>
+</body>
+</html>

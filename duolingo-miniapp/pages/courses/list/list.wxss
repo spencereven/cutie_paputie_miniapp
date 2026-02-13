@@ -1,0 +1,213 @@
+/* Courses List - 课程目录页 (Node ID: mLJNo) */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+}
+
+/* ============ 顶部导航栏 ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.back-btn {
+  font-size: 24px;
+  color: #4A4A4A;
+  font-weight: 300;
+}
+
+.back-btn:active {
+  opacity: 0.6;
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4A4A4A;
+}
+
+.spacer {
+  width: 24px;
+}
+
+/* ============ 主容器 ============ */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ============ 头部标题区 ============ */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  background-color: #FFFFFF;
+}
+
+.main-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #4A4A4A;
+}
+
+.main-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8A8A8A;
+}
+
+/* ============ 课程卡片列表 ============ */
+.courses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+}
+
+.state-text {
+  padding: 16px 20px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.state-text.error {
+  color: #b91c1c;
+}
+
+.course-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E6E6E6;
+  transition: background-color 0.2s ease;
+}
+
+.course-card:active {
+  background-color: #F9F9F9;
+}
+
+/* 缩略图 */
+.card-thumbnail {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #F0F0F0;
+  flex-shrink: 0;
+}
+
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+}
+
+.thumbnail-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e2efff, #d2e8ff);
+}
+
+.fallback-text {
+  font-size: 13px;
+  color: #1e40af;
+  font-weight: 700;
+}
+
+/* 卡片内容 */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #4A4A4A;
+  line-height: 1.2;
+}
+
+.card-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8A8A8A;
+}
+
+.card-meta {
+  font-size: 11px;
+  font-weight: 600;
+  color: #B0B0B0;
+}
+
+/* 右侧箭头 */
+.card-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.chevron-icon {
+  font-size: 18px;
+  color: #C0C0C0;
+  font-weight: 300;
+}
+
+/* ============ 底部空白 ============ */
+.bottom-spacing {
+  height: 20px;
+  background-color: #FFFFFF;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 375px) {
+  .top-bar {
+    padding: 0 12px;
+  }
+
+  .header {
+    padding: 16px 16px;
+  }
+
+  .course-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .card-thumbnail {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card-title {
+    font-size: 14px;
+  }
+
+  .card-subtitle {
+    font-size: 11px;
+  }
+
+  .card-meta {
+    font-size: 10px;
+  }
+}

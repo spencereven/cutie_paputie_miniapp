@@ -1,0 +1,41 @@
+<!-- Input Card Component - 用于登录/注册表单输入 -->
+<view class="input-card">
+  <!-- 第一行输入框 -->
+  <view class="input-row first">
+    <input
+      class="input-field"
+      type="{{type}}"
+      placeholder="{{placeholder}}"
+      value="{{value}}"
+      placeholder-style="color: #D0D0D0;"
+      bindinput="handleInput"
+      bindblur="handleBlur"
+      bindfocus="handleFocus"
+    />
+    <!-- 密码显示/隐藏按钮 -->
+    <view wx:if="{{type === 'password' && value}}" class="toggle-btn" bindtap="handleTogglePassword">
+      <text class="toggle-icon">{{showPassword ? '👁' : '👁‍🗨'}}</text>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view wx:if="{{hasDivider}}" class="divider"></view>
+
+  <!-- 第二行输入框（可选） -->
+  <view wx:if="{{hasDivider}}" class="input-row second">
+    <input
+      class="input-field"
+      type="{{type2 || type}}"
+      placeholder="{{placeholder2}}"
+      value="{{value2}}"
+      placeholder-style="color: #D0D0D0;"
+      bindinput="handleInput2"
+      bindblur="handleBlur2"
+      bindfocus="handleFocus2"
+    />
+    <!-- 第二个密码显示/隐藏按钮 -->
+    <view wx:if="{{type2 === 'password' && value2}}" class="toggle-btn" bindtap="handleTogglePassword2">
+      <text class="toggle-icon">{{showPassword2 ? '👁' : '👁‍🗨'}}</text>
+    </view>
+  </view>
+</view>

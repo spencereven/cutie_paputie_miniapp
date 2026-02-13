@@ -1,0 +1,186 @@
+/* Login Flow 3: Sign In 样式 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+/* ============ 顶部导航栏 ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 16px;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.back-btn {
+  font-size: 24px;
+  color: #A0A0A0;
+  cursor: pointer;
+  line-height: 1;
+  font-weight: 300;
+}
+
+/* ============ 主要内容区域 ============ */
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 32px 24px;
+  gap: 20px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1F1F1F;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+/* ============ 表单区域 ============ */
+.form-section {
+  margin: 20px 0;
+}
+
+/* ============ 忘记密码链接 ============ */
+.forgot-password {
+  font-size: 14px;
+  color: #58CC02;
+  cursor: pointer;
+  text-align: right;
+  margin: 8px 0 12px 0;
+  text-decoration: none;
+}
+
+.forgot-password:active {
+  opacity: 0.7;
+}
+
+/* ============ 登录按钮 ============ */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 16px 0;
+}
+
+.btn-primary {
+  background-color: #58CC02;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.btn-text {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+/* ============ 分割线（with OR） ============ */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1px;
+  background-color: #E6E6E6;
+  margin: 24px 0;
+  position: relative;
+}
+
+.divider-text {
+  position: absolute;
+  background-color: #ffffff;
+  padding: 0 8px;
+  font-size: 14px;
+  color: #A0A0A0;
+}
+
+/* ============ 第三方登录 ============ */
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #F5F5F5;
+  border: 1px solid #E6E6E6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.social-btn:active {
+  background-color: #EFEFEF;
+  transform: scale(0.95);
+}
+
+.social-icon {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1F1F1F;
+}
+
+/* ============ 注册提示 ============ */
+.signup-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #E6E6E6;
+}
+
+.signup-text {
+  font-size: 14px;
+  color: #5A5A5A;
+}
+
+.signup-link {
+  font-size: 14px;
+  font-weight: 700;
+  color: #58CC02;
+  cursor: pointer;
+}
+
+.signup-link:active {
+  opacity: 0.7;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 375px) {
+  .content {
+    padding: 24px 16px;
+    gap: 16px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .form-section {
+    margin: 12px 0;
+  }
+}

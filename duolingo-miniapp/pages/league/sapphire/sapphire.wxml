@@ -1,0 +1,107 @@
+<!-- League - Sapphire Leaderboard -->
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <!-- <view class="top-bar">
+    <text class="page-title">Sapphire League</text>
+    <text class="close-btn" bindtap="handleClose">×</text>
+  </view> -->
+
+  <!-- 排名选择器 -->
+  <view class="rank-selector">
+    <view class="selector-label">排名方式:</view>
+    <view class="selector-buttons">
+      <view
+        class="selector-btn {{rankType === 'class' ? 'active' : ''}}"
+        bindtap="handleRankTypeChange"
+        data-type="class"
+      >
+        班级
+      </view>
+      <view
+        class="selector-btn {{rankType === 'campus' ? 'active' : ''}}"
+        bindtap="handleRankTypeChange"
+        data-type="campus"
+      >
+        校区
+      </view>
+      <view
+        class="selector-btn {{rankType === 'national' ? 'active' : ''}}"
+        bindtap="handleRankTypeChange"
+        data-type="national"
+      >
+        全国
+      </view>
+    </view>
+  </view>
+
+  <!-- 前三名阶梯式排名展示 -->
+  <view class="top-three-podium">
+    <!-- 第二名 (左) -->
+    <view class="podium-item runner-up">
+      <view class="podium-avatar" style="background-color: {{topThree[1].avatarColor}}">
+        {{topThree[1].initial}}
+      </view>
+      <view class="podium-rank">2</view>
+      <text class="podium-name">{{topThree[1].name}}</text>
+      <text class="podium-hours">{{topThree[1].studyHours}}h</text>
+    </view>
+
+    <!-- 第一名 (中) -->
+    <view class="podium-item champion">
+      <view class="podium-crown">👑</view>
+      <view class="podium-avatar" style="background-color: {{topThree[0].avatarColor}}">
+        {{topThree[0].initial}}
+      </view>
+      <view class="podium-rank">1</view>
+      <text class="podium-name">{{topThree[0].name}}</text>
+      <text class="podium-hours">{{topThree[0].studyHours}}h</text>
+    </view>
+
+    <!-- 第三名 (右) -->
+    <view class="podium-item third-place">
+      <view class="podium-avatar" style="background-color: {{topThree[2].avatarColor}}">
+        {{topThree[2].initial}}
+      </view>
+      <view class="podium-rank">3</view>
+      <text class="podium-name">{{topThree[2].name}}</text>
+      <text class="podium-hours">{{topThree[2].studyHours}}h</text>
+    </view>
+  </view>
+
+  <!-- 排行榜列表 -->
+  <scroll-view class="leaderboard" scroll-y="true">
+    <view class="leaderboard-header">
+      <text class="rank-col">排名</text>
+      <text class="user-col">用户</text>
+      <text class="points-col">学习时长</text>
+    </view>
+
+    <view class="leaderboard-list">
+      <!-- 当前用户行 - 高亮显示 -->
+      <view class="leaderboard-row current-user" wx:for="{{[userRank]}}" wx:key="*this">
+        <text class="rank-col">#{{userRank}}</text>
+        <view class="user-info">
+          <view class="user-avatar">{{userInitial}}</view>
+          <text class="user-name">{{userName}}</text>
+        </view>
+        <text class="points-col">{{userStudyHours}}h</text>
+      </view>
+
+      <!-- 其他用户 -->
+      <view class="leaderboard-row" wx:for="{{otherUsers}}" wx:key="id">
+        <text class="rank-col">#{{item.rank}}</text>
+        <view class="user-info">
+          <view class="user-avatar" style="background-color: {{item.avatarColor}}">{{item.initial}}</view>
+          <view class="user-details">
+            <text class="user-name">{{item.name}}</text>
+            <text class="user-level">Level {{item.level}}</text>
+          </view>
+        </view>
+        <text class="points-col">{{item.studyHours}}h</text>
+      </view>
+    </view>
+
+    <!-- 底部空白 -->
+    <view class="leaderboard-bottom"></view>
+  </scroll-view>
+</view>

@@ -1,0 +1,58 @@
+<!-- Materials - 学习资源页 -->
+<view class="page">
+  <!-- 顶部标题栏 -->
+  <view class="top-bar">
+    <text class="page-title">Learning Materials</text>
+    <text class="close-btn" bindtap="handleClose">×</text>
+  </view>
+
+  <!-- 选项卡 -->
+  <view class="tabs">
+    <view class="tab {{activeTab === 'all' ? 'active' : ''}}" bindtap="handleTabChange" data-tab="all">
+      <text>All</text>
+    </view>
+    <view class="tab {{activeTab === 'pdf' ? 'active' : ''}}" bindtap="handleTabChange" data-tab="pdf">
+      <text>📄 PDF</text>
+    </view>
+    <view class="tab {{activeTab === 'audio' ? 'active' : ''}}" bindtap="handleTabChange" data-tab="audio">
+      <text>🎵 Audio</text>
+    </view>
+    <view class="tab {{activeTab === 'video' ? 'active' : ''}}" bindtap="handleTabChange" data-tab="video">
+      <text>🎬 Video</text>
+    </view>
+  </view>
+
+  <!-- 资源列表 -->
+  <scroll-view class="materials-list" scroll-y="true">
+    <view class="materials-grid">
+      <!-- PDF资源 -->
+      <view class="material-card" wx:for="{{visibleMaterials}}" wx:key="id" bindtap="handleMaterialClick" data-id="{{item.id}}" data-type="{{item.type}}">
+        <view class="material-icon {{item.type}}">
+          <text>{{item.icon}}</text>
+        </view>
+        <view class="material-info">
+          <text class="material-name">{{item.name}}</text>
+          <text class="material-meta">{{item.size}} • {{item.duration}}</text>
+          <view class="material-progress" wx:if="{{item.progress > 0}}">
+            <view class="progress-bar">
+              <view class="progress-fill" style="width: {{item.progress}}%"></view>
+            </view>
+            <text class="progress-text">{{item.progress}}%</text>
+          </view>
+        </view>
+        <view class="material-action">
+          <text class="action-icon">{{item.progress > 0 ? '▶' : '↓'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{visibleMaterials.length === 0}}">
+      <text class="empty-icon">📚</text>
+      <text class="empty-text">No materials available</text>
+    </view>
+
+    <!-- 底部空白 -->
+    <view class="materials-bottom"></view>
+  </scroll-view>
+</view>

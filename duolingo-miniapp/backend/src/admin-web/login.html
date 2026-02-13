@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duolingo Admin - Login</title>
+  <link rel="stylesheet" href="/admin/styles.css">
+</head>
+<body data-page="login">
+  <main class="layout">
+    <section class="card auth-card">
+      <h1>Admin Console</h1>
+      <p class="muted">Teacher/Admin sign in</p>
+      <form id="loginForm" class="form">
+        <label>Email</label>
+        <input id="loginEmail" type="email" placeholder="teacher.demo@miniapp.local" required>
+        <label>Password</label>
+        <input id="loginPassword" type="password" placeholder="Teacher123!" required>
+        <button type="submit">Sign In</button>
+      </form>
+      <p id="loginError" class="error hidden"></p>
+      <p class="hint">Demo accounts are listed in backend README.</p>
+    </section>
+  </main>
+  <script src="/admin/app.js"></script>
+</body>
+</html>

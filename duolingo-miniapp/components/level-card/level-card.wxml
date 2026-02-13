@@ -1,0 +1,15 @@
+<!-- 关卡卡片组件 -->
+<view class="level-card" bindtap="handleCardTap" data-id="{{id}}">
+  <view class="level-icon-wrapper {{iconType}}">
+    <view class="level-icon">
+      <text class="icon-content">{{iconContent}}</text>
+    </view>
+  </view>
+  <view class="level-info">
+    <text class="level-title">{{title}}</text>
+    <text class="level-subtitle">{{subtitle}}</text>
+  </view>
+  <view wx:if="{{showLock}}" class="level-lock">
+    <text class="lock-icon">🔒</text>
+  </view>
+</view>

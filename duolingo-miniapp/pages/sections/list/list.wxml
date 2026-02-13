@@ -1,0 +1,63 @@
+<!-- Sections List - Section列表页 -->
+<view class="page">
+  <!-- 顶部标题栏 -->
+  <view class="top-bar">
+    <view class="title-container">
+      <text class="page-title">Learning Path</text>
+      <text class="page-subtitle">{{sections.length}} Sections</text>
+    </view>
+    <text class="close-btn" bindtap="handleClose">×</text>
+  </view>
+
+  <!-- 列表容器 -->
+  <scroll-view class="list-container" scroll-y="true" bindscrolltolower="handleLoadMore">
+    <!-- 已解锁的Sections -->
+    <view class="section-group">
+      <text class="group-title">Unlocked</text>
+      <view class="cards-list">
+        <section-card
+          wx:for="{{unlockedSections}}"
+          wx:key="id"
+          section-id="{{item.id}}"
+          title="{{item.title}}"
+          progress="{{item.progress}}"
+          badgeIcon="{{item.badgeIcon}}"
+          badgeText="{{item.badgeText}}"
+          hasTopContent="{{item.hasTopContent}}"
+          topBgColor="{{item.topBgColor}}"
+          bubbleText="{{item.bubbleText}}"
+          showCharacter="{{item.showCharacter}}"
+          characterIcon="{{item.characterIcon}}"
+          jumpText="{{item.jumpText}}"
+          bind:tap="handleSectionClick"
+        ></section-card>
+      </view>
+    </view>
+
+    <!-- 锁定的Sections -->
+    <view class="section-group" wx:if="{{lockedSections.length > 0}}">
+      <text class="group-title">Locked</text>
+      <view class="cards-list">
+        <section-card
+          wx:for="{{lockedSections}}"
+          wx:key="id"
+          section-id="{{item.id}}"
+          title="{{item.title}}"
+          progress="{{item.progress}}"
+          badgeIcon="{{item.badgeIcon}}"
+          badgeText="{{item.badgeText}}"
+          hasTopContent="{{item.hasTopContent}}"
+          topBgColor="{{item.topBgColor}}"
+          bubbleText="{{item.bubbleText}}"
+          showCharacter="{{item.showCharacter}}"
+          characterIcon="{{item.characterIcon}}"
+          jumpText="{{item.jumpText}}"
+          bind:tap="handleLockedClick"
+        ></section-card>
+      </view>
+    </view>
+
+    <!-- 底部空白区 -->
+    <view class="list-bottom"></view>
+  </scroll-view>
+</view>

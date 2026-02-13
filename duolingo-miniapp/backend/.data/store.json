@@ -1,0 +1,18 @@
+{
+  "nextUserId": 2,
+  "users": [
+    {
+      "id": "1",
+      "email": "even@qq.com",
+      "passwordHash": "$2a$10$ZpRRw.SMFxNwpQhnEEhBX.EZPHWV7Wt2ex8UxSvGfgHfczsxWzvWi",
+      "name": "even",
+      "birthday": "2026-02-12",
+      "avatarUrl": "",
+      "wechatOpenid": "",
+      "wechatUnionid": "",
+      "createdAt": "2026-02-12T05:24:16.293Z",
+      "updatedAt": "2026-02-12T05:24:16.293Z"
+    }
+  ],
+  "refreshTokens": []
+}

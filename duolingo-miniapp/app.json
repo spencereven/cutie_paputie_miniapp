@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/login/welcome/welcome",
+    "pages/login/auth-choice/auth-choice",
+    "pages/login/signin/signin",
+    "pages/login/register/register",
+    "pages/index/index",
+    "pages/admin/classroom/classroom",
+    "pages/sections/list/list",
+    "pages/section/detail/detail",
+    "pages/level/detail/detail",
+    "pages/league/sapphire/sapphire",
+    "pages/courses/list/list",
+    "pages/materials/detail/detail",
+    "pages/lesson/interactive/interactive",
+    "pages/lesson/practice/practice",
+    "pages/player/pdf/pdf",
+    "pages/player/audio/audio",
+    "pages/player/video/video",
+    "pages/achievement/achievement"
+  ],
+  "window": {
+    "backgroundColor": "#f5f5f5",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Duolingo"
+  },
+  "style": "v2"
+}

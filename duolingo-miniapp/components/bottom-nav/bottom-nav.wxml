@@ -1,0 +1,33 @@
+<!-- 底部导航组件 -->
+<view class="bottom-nav-wrapper">
+  <view
+    class="nav-item {{activeTab === 'home' ? 'active' : ''}}"
+    bindtap="handleNavTap"
+    data-tab="home"
+  >
+    <view class="nav-icon-wrapper">
+      <text class="nav-icon">🏠</text>
+    </view>
+  </view>
+  <view
+    class="nav-item {{activeTab === 'league' ? 'active' : ''}}"
+    bindtap="handleNavTap"
+    data-tab="league"
+  >
+    <text class="nav-icon">🏆</text>
+  </view>
+  <view
+    class="nav-item {{activeTab === 'courses' ? 'active' : ''}}"
+    bindtap="handleNavTap"
+    data-tab="courses"
+  >
+    <text class="nav-icon">📚</text>
+  </view>
+  <view
+    class="nav-item {{activeTab === 'more' ? 'active' : ''}}"
+    bindtap="handleNavTap"
+    data-tab="more"
+  >
+    <text class="nav-icon">⋯</text>
+  </view>
+</view>

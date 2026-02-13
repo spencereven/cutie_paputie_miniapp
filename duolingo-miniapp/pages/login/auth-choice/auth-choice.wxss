@@ -1,0 +1,110 @@
+/* Login Flow 2: Auth Choice 样式 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+/* ============ 顶部导航栏 ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 16px;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.back-btn {
+  font-size: 24px;
+  color: #A0A0A0;
+  cursor: pointer;
+  line-height: 1;
+  font-weight: 300;
+}
+
+/* ============ Section 部分 ============ */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 24px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #5A5A5A;
+  text-align: center;
+}
+
+/* ============ 按钮样式 ============ */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 342px;
+  height: 52px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #58CC02;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  border: 2px solid #E6E6E6;
+}
+
+.btn-secondary:active {
+  background-color: #F9F9F9;
+}
+
+.btn-text {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.btn-primary .btn-text {
+  color: #ffffff;
+}
+
+.btn-secondary .btn-text {
+  color: #58CC02;
+}
+
+/* ============ 分割线 ============ */
+.divider {
+  height: 1px;
+  background-color: #E6E6E6;
+  margin: 20px 0;
+  width: 100%;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 375px) {
+  .section {
+    padding: 0 16px;
+  }
+
+  .btn {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,198 @@
+/* Login Flow 4: Register 样式 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+/* ============ 顶部导航栏 ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 16px;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.back-btn {
+  font-size: 24px;
+  color: #A0A0A0;
+  cursor: pointer;
+  line-height: 1;
+  font-weight: 300;
+}
+
+/* ============ 主要内容区域 ============ */
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 32px 24px;
+  gap: 16px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1F1F1F;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+/* ============ 表单区域 ============ */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+/* ============ 生日选择区域 ============ */
+.birthday-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.section-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5A5A5A;
+}
+
+.birthday-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid #E6E6E6;
+  border-radius: 12px;
+  background-color: #FAFAFA;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.birthday-input:active {
+  background-color: #F0F0F0;
+}
+
+.birthday-text {
+  font-size: 16px;
+  color: #D0D0D0;
+  flex: 1;
+}
+
+.birthday-text.active {
+  color: #1F1F1F;
+}
+
+.birthday-icon {
+  font-size: 12px;
+  color: #A0A0A0;
+  margin-left: 8px;
+}
+
+/* ============ 条款提示 ============ */
+.terms-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 16px 0;
+  padding: 0 4px;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: #5A5A5A;
+  line-height: 1.5;
+}
+
+.terms-link {
+  font-size: 12px;
+  color: #58CC02;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.terms-link:active {
+  opacity: 0.7;
+}
+
+/* ============ 注册按钮 ============ */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 24px 0 16px 0;
+}
+
+.btn-primary {
+  background-color: #58CC02;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.btn-text {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+/* ============ 登录提示 ============ */
+.signin-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #E6E6E6;
+}
+
+.signin-text {
+  font-size: 14px;
+  color: #5A5A5A;
+}
+
+.signin-link {
+  font-size: 14px;
+  font-weight: 700;
+  color: #58CC02;
+  cursor: pointer;
+}
+
+.signin-link:active {
+  opacity: 0.7;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 375px) {
+  .content {
+    padding: 24px 16px;
+    gap: 12px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .form-section {
+    gap: 10px;
+  }
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duolingo Admin - Uploads</title>
+  <link rel="stylesheet" href="/admin/styles.css">
+</head>
+<body data-page="uploads">
+  <main class="layout">
+    <header class="topbar card">
+      <div>
+        <h2>Upload Center</h2>
+        <p class="muted">
+          <span id="userName">-</span>
+          <span class="role-pill" id="userRole">-</span>
+        </p>
+      </div>
+      <div class="actions">
+        <button id="reloadBtn" class="secondary">Reload</button>
+        <button id="logoutBtn" class="danger">Logout</button>
+      </div>
+    </header>
+
+    <nav class="card page-nav">
+      <a href="/admin/dashboard" data-nav="dashboard">Dashboard</a>
+      <a href="/admin/classrooms" data-nav="classrooms">Classrooms</a>
+      <a href="/admin/lessons" data-nav="lessons">Lessons</a>
+      <a href="/admin/uploads" data-nav="uploads">Uploads</a>
+    </nav>
+
+    <div id="notice" class="card notice hidden"></div>
+    <div id="statusBar" class="status hidden"></div>
+
+    <section id="managerContent">
+      <article class="card workspace-card">
+        <h3>Workspace</h3>
+        <div class="workspace-grid">
+          <div>
+            <label>Campus</label>
+            <select id="campusSelect"></select>
+          </div>
+          <div>
+            <label>Managed Class</label>
+            <select id="classSelect"></select>
+          </div>
+          <div class="workspace-action">
+            <button id="refreshClassesBtn" class="secondary">Refresh</button>
+          </div>
+        </div>
+      </article>
+
+      <section class="panel-grid">
+        <article class="card">
+          <h3>Upload Asset</h3>
+          <label>Lesson</label>
+          <select id="uploadLessonSelect"></select>
+          <label>Asset Type</label>
+          <select id="uploadAssetType">
+            <option value="FILE">FILE</option>
+            <option value="AUDIO">AUDIO</option>
+            <option value="VIDEO">VIDEO</option>
+          </select>
+          <label>Title</label>
+          <input id="uploadAssetTitle" placeholder="Worksheet PDF">
+          <label>File</label>
+          <input id="uploadFileInput" type="file">
+          <p id="uploadLimitHint" class="hint">Upload limit: loading...</p>
+          <div class="inline action-row">
+            <button id="uploadAssetBtn">Upload & Attach</button>
+            <button id="cancelAssetSelectBtn" type="button" class="secondary">Cancel</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Upload Lesson Cover</h3>
+          <label>Lesson</label>
+          <select id="uploadLessonSelectMirror" disabled></select>
+          <label>Cover File</label>
+          <input id="uploadCoverFileInput" type="file" accept="image/*">
+          <p class="hint">Use an image file for lesson card cover.</p>
+          <div class="inline action-row">
+            <button id="uploadCoverBtn" class="secondary">Upload As Lesson Cover</button>
+            <button id="cancelCoverSelectBtn" type="button" class="secondary">Cancel</button>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="/admin/app.js"></script>
+</body>
+</html>

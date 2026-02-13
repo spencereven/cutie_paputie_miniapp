@@ -1,0 +1,106 @@
+<!-- Section Detail Page - Section详情页 -->
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="top-bar">
+    <text class="back-btn" bindtap="handleBack">←</text>
+    <text class="page-title">French</text>
+    <view class="spacer"></view>
+  </view>
+
+  <!-- 主容器 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- Section 1 卡片 -->
+    <view class="section-card" wx:if="{{currentSection === 1}}">
+      <view class="card-top blue">
+        <view class="bubble">
+          <text class="bubble-text">Je commence en français.</text>
+        </view>
+        <view class="character-circle">🦉</view>
+      </view>
+      <view class="card-bottom">
+        <view class="section-header">
+          <text class="section-title">Section 1</text>
+          <view class="badge">
+            <text class="badge-icon">🚩</text>
+            <text class="badge-text">5 to 9</text>
+          </view>
+        </view>
+        <view class="progress-container">
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{section1Progress}}%;"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Section 2 卡片 -->
+    <view class="section-card" wx:if="{{currentSection === 2}}">
+      <view class="card-top blue">
+        <view class="bubble">
+          <text class="bubble-text">Je commute quelques mots.</text>
+        </view>
+        <view class="character-circle">🦉</view>
+      </view>
+      <view class="card-bottom">
+        <view class="section-header">
+          <text class="section-title">Section 2</text>
+          <view class="badge">
+            <text class="badge-icon">🚩</text>
+            <text class="badge-text">10 to 19</text>
+          </view>
+        </view>
+        <view class="progress-container">
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{section2Progress}}%;"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Section 3 卡片 -->
+    <view class="section-card" wx:if="{{currentSection === 3}}">
+      <view class="card-top blue">
+        <view class="bubble">
+          <text class="bubble-text">Je commute plusieurs phrases.</text>
+        </view>
+        <view class="character-circle">🦉</view>
+      </view>
+      <view class="card-bottom">
+        <view class="section-header">
+          <text class="section-title">Section 3</text>
+          <view class="badge">
+            <text class="badge-icon">🚩</text>
+            <text class="badge-text">20 to 29</text>
+          </view>
+        </view>
+        <view class="progress-container">
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{section3Progress}}%;"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 课程内容区域 -->
+    <view class="content-section">
+      <text class="content-title">Lessons in Section {{currentSection}}</text>
+
+      <!-- 课程列表 -->
+      <view class="lessons-list">
+        <view class="lesson-item" wx:for="{{lessons}}" wx:key="id" bindtap="handleLessonClick" data-id="{{item.id}}">
+          <view class="lesson-icon {{item.completed ? 'completed' : ''}}">
+            {{item.icon}}
+          </view>
+          <view class="lesson-info">
+            <text class="lesson-title">{{item.title}}</text>
+            <text class="lesson-subtitle">{{item.subtitle}}</text>
+          </view>
+          <text class="lesson-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部空白 -->
+    <view class="bottom-spacing"></view>
+  </scroll-view>
+</view>

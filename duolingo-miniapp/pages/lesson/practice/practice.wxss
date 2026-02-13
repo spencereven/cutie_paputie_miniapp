@@ -1,0 +1,319 @@
+/* Practice Mode 样式 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+/* ============ 顶部进度 ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #E6E6E6;
+  gap: 12px;
+}
+
+.progress-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.round-number {
+  font-size: 12px;
+  font-weight: 600;
+  color: #A0A0A0;
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: #E6E6E6;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #58CC02 0%, #5CB85C 100%);
+  transition: width 0.3s ease;
+}
+
+.close-btn {
+  font-size: 24px;
+  color: #A0A0A0;
+  cursor: pointer;
+  line-height: 1;
+  padding: 8px;
+}
+
+/* ============ 内容区域 ============ */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ============ 练习类型头 ============ */
+.exercise-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 24px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.exercise-icon {
+  font-size: 48px;
+}
+
+.exercise-type {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1F1F1F;
+}
+
+/* ============ 练习区域 ============ */
+.exercise-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.instruction {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5A5A5A;
+}
+
+.translation-box {
+  padding: 16px;
+  background-color: #F5F5F5;
+  border-radius: 12px;
+  border-left: 4px solid #58CC02;
+}
+
+.translation-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1F1F1F;
+}
+
+.speak-box {
+  padding: 16px;
+  background-color: #F5F5F5;
+  border-radius: 12px;
+  border-left: 4px solid #58CC02;
+  text-align: center;
+}
+
+.speak-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F1F1F;
+}
+
+/* ============ 输入区域 ============ */
+.input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.answer-input {
+  height: 48px;
+  padding: 12px 16px;
+  border: 2px solid #E6E6E6;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.answer-input:focus {
+  border-color: #58CC02;
+}
+
+/* ============ 选项 ============ */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  padding: 16px;
+  border: 2px solid #E6E6E6;
+  border-radius: 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  color: #1F1F1F;
+}
+
+.option:active {
+  background-color: #F9F9F9;
+}
+
+.option.selected {
+  border-color: #58CC02;
+  background-color: #F0FFF0;
+  font-weight: 600;
+  color: #58CC02;
+}
+
+/* ============ 音频播放 ============ */
+.audio-play {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  border: 2px dashed #58CC02;
+  border-radius: 12px;
+  background-color: #F0FFF0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.audio-play:active {
+  background-color: #E6FFE6;
+}
+
+.audio-icon {
+  font-size: 36px;
+}
+
+.audio-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #58CC02;
+}
+
+/* ============ 录音按钮 ============ */
+.record-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  border: 2px solid #E6E6E6;
+  border-radius: 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.record-btn:active {
+  background-color: #F9F9F9;
+}
+
+.record-btn.recording {
+  border-color: #FF6B6B;
+  background-color: #FFF0F0;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.record-icon {
+  font-size: 36px;
+}
+
+.record-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1F1F1F;
+}
+
+.record-btn.recording .record-label {
+  color: #FF6B6B;
+}
+
+/* ============ 底部按钮 ============ */
+.button-area {
+  display: flex;
+  gap: 12px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-top: 1px solid #E6E6E6;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 52px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #58CC02;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  border: 2px solid #E6E6E6;
+}
+
+.btn-secondary:active {
+  background-color: #F9F9F9;
+}
+
+.btn-text {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.btn-secondary .btn-text {
+  color: #58CC02;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 375px) {
+  .exercise-section {
+    padding: 16px;
+  }
+
+  .exercise-header {
+    padding: 24px 16px;
+  }
+
+  .button-area {
+    padding: 16px;
+  }
+
+  .btn {
+    height: 48px;
+  }
+}

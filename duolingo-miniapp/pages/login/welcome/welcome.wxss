@@ -1,0 +1,125 @@
+/* Login Flow 1: Sign Back In 样式 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+/* ============ 顶部 Owl 部分 ============ */
+.owl-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 16px 40px;
+  width: 100%;
+}
+
+.owl {
+  font-size: 120px;
+  line-height: 1;
+}
+
+/* ============ 标题 ============ */
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #5A5A5A;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* ============ 账户卡片容器 ============ */
+.account-card-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 342px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid #E6E6E6;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+/* ============ Add Account 行 ============ */
+.add-account-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid #E6E6E6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-account-row:active {
+  background-color: #F9F9F9;
+}
+
+.add-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  border: 2px solid #CFCFCF;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.add-icon {
+  font-size: 20px;
+  color: #B0B0B0;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.add-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #A0A0A0;
+}
+
+/* ============ MANAGE ACCOUNTS 链接 ============ */
+.manage-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #B0B0B0;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.manage-text:active {
+  color: #8A8A8A;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 375px) {
+  .owl-section {
+    padding: 50px 12px 30px;
+  }
+
+  .owl {
+    font-size: 100px;
+  }
+
+  .page-title {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .account-card-container {
+    max-width: 100%;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 24px;
+  }
+}

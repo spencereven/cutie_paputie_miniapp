@@ -1,0 +1,189 @@
+<!-- Level Detail - 基于音频和图片的答题页面 -->
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="top-bar">
+    <text class="back-btn" bindtap="handleBack">←</text>
+    <text class="progress-text" wx:if="{{levelId === 1 || levelId === '1'}}">
+      Level 1 · {{level1QuestionIndex + 1}}/{{level1QuestionTotalDisplay}}
+    </text>
+    <text class="progress-text" wx:else>Level {{levelId}}</text>
+    <view class="spacer"></view>
+  </view>
+
+  <!-- 主容器 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- Level 1 - 基于音频和图片 -->
+    <block wx:if="{{levelId === 1 || levelId === '1'}}">
+      <view class="l1-wrap">
+        <text class="l1-title">根据音频，结合图片进行回答</text>
+        <text class="l1-subtitle">{{level1PromptText}}</text>
+
+        <view class="l1-image-wrap">
+          <image class="l1-image" src="{{level1ImageUrl}}" mode="aspectFill"></image>
+        </view>
+
+        <view class="l1-card">
+          <text class="l1-question-title">{{level1QuestionTitle}}</text>
+          <view class="l1-audio-row">
+            <button class="l1-btn l1-btn-primary small" bindtap="toggleLevel1PromptAudio">
+              {{level1IsPlayingPrompt ? '暂停题目' : '播放题目'}}
+            </button>
+            <view class="l1-progress-track">
+              <view class="l1-progress-fill" style="width: {{level1PromptProgress}}%;"></view>
+            </view>
+          </view>
+          <text class="l1-time">{{level1PromptCurrentText}} / {{level1PromptDurationText}}</text>
+          <text class="l1-attempt">尝试次数：{{level1AttemptsUsed}} / {{level1MaxAttempts}}</text>
+          <text class="l1-pass">通关分：{{level1PassScore}}</text>
+        </view>
+
+        <view class="l1-card">
+          <text class="l1-record-status">
+            {{level1IsRecording ? '录音中...' : (level1HasRecording ? '录音完成，可提交评分' : '点击开始录音')}}
+          </text>
+          <text class="l1-record-time" wx:if="{{level1IsRecording || level1HasRecording}}">
+            时长：{{level1RecordSeconds}}s
+          </text>
+          <view class="l1-action-row">
+            <button
+              class="l1-btn l1-btn-primary"
+              bindtap="toggleLevel1Recording"
+              loading="{{level1Submitting}}"
+              disabled="{{level1Submitting}}"
+            >
+              {{level1IsRecording ? '停止录音' : '开始录音'}}
+            </button>
+          </view>
+          <view class="l1-action-row" wx:if="{{level1HasRecording && !level1IsRecording}}">
+            <button
+              class="l1-btn"
+              bindtap="handleLevel1Rerecord"
+              disabled="{{level1Submitting || (!level1PassAchieved && level1AttemptsUsed >= level1MaxAttempts)}}"
+            >
+              重新录制
+            </button>
+            <button
+              class="l1-btn l1-btn-primary"
+              bindtap="handleLevel1Submit"
+              loading="{{level1Submitting}}"
+              disabled="{{level1Submitting || level1AttemptsUsed >= level1MaxAttempts}}"
+            >
+              提交评分
+            </button>
+          </view>
+        </view>
+
+        <view class="l1-result-card" wx:if="{{level1Result}}">
+          <text class="l1-grade {{'grade-' + level1Result.gradeKey}}">{{level1Result.gradeLabel}}</text>
+          <text class="l1-score">得分：{{level1Result.score}}</text>
+          <text class="l1-result-msg">{{level1Result.message}}</text>
+        </view>
+
+        <view class="l1-answer-card" wx:if="{{!level1PassAchieved && level1AttemptsUsed >= level1MaxAttempts}}">
+          <text class="l1-answer-title">已达到最大尝试次数</text>
+          <text class="l1-answer-desc">先听老师答案并跟读，再进入下一题</text>
+          <button class="l1-btn" bindtap="toggleLevel1AnswerAudio">
+            {{level1IsPlayingAnswer ? '暂停答案音频' : '播放答案音频'}}
+          </button>
+        </view>
+
+        <view class="l1-next-wrap" wx:if="{{level1CanGoNext}}">
+          <button
+            class="l1-btn l1-btn-primary"
+            bindtap="goLevel1Next"
+            disabled="{{!level1PassAchieved && !level1AnswerPlayed}}"
+          >
+            {{level1QuestionIndex + 1 >= level1QuestionTotal ? '完成本关' : '下一题'}}
+          </button>
+          <text class="l1-next-tip" wx:if="{{!level1PassAchieved && !level1AnswerPlayed}}">
+            请先播放答案音频并跟读
+          </text>
+        </view>
+      </view>
+    </block>
+
+    <!-- Level 2 - 视频 + 分句卡片 -->
+    <block wx:if="{{levelId === 2 || levelId === '2'}}">
+      <!-- 教师视频 -->
+      <view class="video-container">
+        <image class="video-image" src="{{videoImageUrl}}" mode="aspectFill"></image>
+        <view class="video-overlay">
+          <text class="play-icon-large">▶</text>
+          <view class="video-controls">
+            <text class="video-time">{{videoCurrentTime}}</text>
+            <view class="video-progress">
+              <view class="progress-bg"></view>
+              <view class="progress-fill" style="width: {{videoProgress}}%"></view>
+              <view class="progress-dot" style="left: {{videoProgress}}%"></view>
+            </view>
+            <text class="video-duration">{{videoDuration}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 分句卡片列表 -->
+      <view class="sentence-pills">
+        <view class="pill">
+          <text class="pill-text">{{currentSentenceIndex}}/{{totalSentences}}</text>
+        </view>
+      </view>
+
+      <!-- 分句卡片 -->
+      <view class="sentence-cards">
+        <view
+          wx:for="{{sentenceCards}}"
+          wx:key="id"
+          class="sentence-card {{item.isActive ? 'active' : ''}}"
+          bindtap="selectSentence"
+          data-index="{{index}}"
+        >
+          <text class="card-title">{{item.enText}}</text>
+          <text class="card-subtitle">{{item.zhText}}</text>
+
+          <view class="card-bottom">
+            <view class="speed-button">
+              <text class="speed-icon">🐢</text>
+              <text class="speed-text">{{item.speed}}</text>
+            </view>
+            <view class="progress-bar-small">
+              <view class="progress-bg-small"></view>
+              <view class="progress-fill-small" style="width: {{item.progress}}%"></view>
+            </view>
+            <text class="duration-text">{{item.duration}}</text>
+            <view class="mic-btn {{item.isAnswered ? 'answered' : ''}}" bindtap="recordSentence" data-index="{{index}}">
+              <text class="mic-icon">🎤</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- Level 3 - 学生复述模式 -->
+    <block wx:if="{{levelId === 3 || levelId === '3'}}">
+      <!-- 顶部提示卡片 -->
+      <view class="level3-instruction-card">
+        <text class="level3-instruction-text">{{level3PromptText}}</text>
+      </view>
+
+      <!-- 中间空白区域 + 录音部分 -->
+      <view class="level3-recording-area">
+        <!-- 录音提示标签 -->
+        <text class="level3-recording-hint">{{level3RecordLabel}}</text>
+
+        <!-- 录音按钮 -->
+        <view class="level3-button-wrapper">
+          <view class="level3-record-btn {{isRecording ? 'recording' : ''}}" bindtap="toggleRecording">
+            <text class="level3-record-icon">🎤</text>
+          </view>
+          <text class="level3-button-label">{{recordButtonLabel}}</text>
+        </view>
+      </view>
+
+      <!-- 底部提示卡片 -->
+      <view class="level3-note-card">
+        <text class="level3-note-title">提示</text>
+        <text class="level3-note-text">{{level3NoteText}}</text>
+      </view>
+    </block>
+  </scroll-view>
+</view>

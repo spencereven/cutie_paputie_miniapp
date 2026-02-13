@@ -1,0 +1,127 @@
+.page {
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+.container {
+  height: 100vh;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.section-card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(15, 23, 42, 0.05);
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16rpx;
+}
+
+.picker-value {
+  background: #f8fafc;
+  border: 1rpx solid #dce5ef;
+  border-radius: 14rpx;
+  padding: 18rpx 20rpx;
+  color: #0f172a;
+}
+
+.input {
+  width: 100%;
+  height: 76rpx;
+  border-radius: 14rpx;
+  border: 1rpx solid #dce5ef;
+  background: #f8fafc;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 14rpx;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.search {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.btn {
+  border-radius: 14rpx;
+  font-size: 26rpx;
+  line-height: 1;
+}
+
+.btn::after {
+  border: none;
+}
+
+.btn.primary {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.btn.small {
+  height: 64rpx;
+  padding: 0 24rpx;
+  min-width: 120rpx;
+}
+
+.btn.ghost {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.student-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10rpx;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #eef2f7;
+}
+
+.student-row:last-child {
+  border-bottom: none;
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.student-name {
+  font-size: 28rpx;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.student-email {
+  font-size: 22rpx;
+  color: #64748b;
+  margin-top: 6rpx;
+}
+
+.sub-text {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #64748b;
+}
+
+.empty {
+  font-size: 24rpx;
+  color: #94a3b8;
+}
+
+.bottom-space {
+  height: 40rpx;
+}

@@ -1,0 +1,291 @@
+/* Section Detail Page 样式 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  padding: 0;
+}
+
+/* ============ 顶部导航栏 ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0 16px;
+  border-bottom: 1px solid #E6E6E6;
+  background-color: #FFFFFF;
+}
+
+.back-btn {
+  font-size: 24px;
+  color: #6B6B6B;
+  font-weight: 300;
+}
+
+.back-btn:active {
+  opacity: 0.6;
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4A4A4A;
+}
+
+.spacer {
+  width: 24px;
+}
+
+/* ============ 主容器 ============ */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ============ Section 卡片 ============ */
+.section-card {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  border: 1px solid #E6E6E6;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 16px;
+  min-height: 140px;
+  background-color: #DDF2FF;
+}
+
+.card-top.blue {
+  background-color: #DDF2FF;
+}
+
+.bubble {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 12px;
+  max-width: 65%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.bubble-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6B6B6B;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.character-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  font-size: 40px;
+}
+
+.card-bottom {
+  padding: 16px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4A4A4A;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #F5F5F5;
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.badge-icon {
+  font-size: 14px;
+  color: #2CB7FF;
+}
+
+.badge-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8A8A8A;
+}
+
+/* ============ 进度条 ============ */
+.progress-container {
+  width: 100%;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #E6E6E6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #40C400;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+/* ============ 内容区域 ============ */
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 16px;
+}
+
+.content-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4A4A4A;
+}
+
+/* ============ 课程列表 ============ */
+.lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lesson-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #E6E6E6;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lesson-item:active {
+  background-color: #F5F5F5;
+  transform: scale(0.98);
+}
+
+.lesson-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: #E5F6FF;
+  border-radius: 10px;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.lesson-icon.completed {
+  background-color: #E8F5E9;
+}
+
+.lesson-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.lesson-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4A4A4A;
+}
+
+.lesson-subtitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: #8A8A8A;
+}
+
+.lesson-arrow {
+  font-size: 18px;
+  color: #C0C0C0;
+  font-weight: 300;
+  margin-right: 4px;
+}
+
+/* ============ 底部空白 ============ */
+.bottom-spacing {
+  height: 20px;
+  background-color: #FFFFFF;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 375px) {
+  .top-bar {
+    padding: 0 12px;
+  }
+
+  .section-card {
+    margin: 12px;
+  }
+
+  .card-top {
+    padding: 12px;
+    min-height: 120px;
+  }
+
+  .card-bottom {
+    padding: 12px;
+  }
+
+  .content-section {
+    padding: 16px 12px;
+  }
+
+  .lesson-item {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .lesson-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .lesson-title {
+    font-size: 13px;
+  }
+
+  .lesson-subtitle {
+    font-size: 11px;
+  }
+}

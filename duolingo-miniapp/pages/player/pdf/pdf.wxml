@@ -1,0 +1,56 @@
+<!-- PDF Viewer -->
+<view class="page">
+  <!-- 顶部工具栏 -->
+  <view class="top-bar">
+    <text class="back-btn" bindtap="handleBack">←</text>
+    <view class="title-section">
+      <text class="title">{{pdfName}}</text>
+      <text class="page-number">Page {{currentPage}}/{{totalPages}}</text>
+    </view>
+    <view class="spacer"></view>
+  </view>
+
+  <!-- PDF内容区域 -->
+  <view class="pdf-container">
+    <!-- 在实际应用中，这里应该显示PDF内容 -->
+    <!-- 这里使用占位符显示PDF预览 -->
+    <view class="pdf-preview">
+      <view class="pdf-page">
+        <text class="pdf-icon">📄</text>
+        <text class="pdf-title">{{pdfName}}</text>
+        <text class="pdf-meta">Page {{currentPage}}</text>
+        <view class="pdf-content">
+          <text>{{pageContent}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部控制栏 -->
+  <view class="bottom-bar">
+    <!-- 页码输入 -->
+    <view class="page-nav">
+      <view class="nav-btn" bindtap="handlePrevPage">
+        <text>‹</text>
+      </view>
+      <input class="page-input" type="number" value="{{currentPage}}" bindinput="handlePageInput" />
+      <view class="nav-btn" bindtap="handleNextPage">
+        <text>›</text>
+      </view>
+    </view>
+
+    <!-- 工具按钮 -->
+    <view class="tools">
+      <view class="tool-btn" bindtap="handleZoomOut">
+        <text class="tool-icon">−</text>
+      </view>
+      <text class="zoom-level">{{zoomLevel}}%</text>
+      <view class="tool-btn" bindtap="handleZoomIn">
+        <text class="tool-icon">+</text>
+      </view>
+      <view class="tool-btn" bindtap="handleDownload">
+        <text class="tool-icon">⬇</text>
+      </view>
+    </view>
+  </view>
+</view>

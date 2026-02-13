@@ -1,0 +1,63 @@
+<!-- Courses List - 课程目录 (Node ID: mLJNo) -->
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="top-bar">
+    <text class="back-btn" bindtap="handleBack">←</text>
+    <text class="page-title">课程</text>
+    <view class="spacer"></view>
+  </view>
+
+  <!-- 主容器 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- 标题和副标题 -->
+    <view class="header">
+      <text class="main-title">课程目录</text>
+      <text class="main-subtitle">选择一节课查看课件、音频与视频</text>
+    </view>
+
+    <!-- 课程卡片列表 -->
+    <view class="courses-container">
+      <view class="state-text" wx:if="{{loading}}">加载中...</view>
+      <view class="state-text error" wx:if="{{!loading && errorText}}">{{errorText}}</view>
+      <view class="state-text" wx:if="{{!loading && !errorText && courses.length === 0}}">
+        当前班级还没有已发布课程
+      </view>
+
+      <view
+        class="course-card"
+        wx:for="{{courses}}"
+        wx:key="id"
+        bindtap="handleCourseClick"
+        data-id="{{item.id}}"
+      >
+        <!-- 左侧缩略图 -->
+        <view class="card-thumbnail">
+          <image
+            class="thumbnail-image"
+            wx:if="{{item.thumbnailUrl}}"
+            src="{{item.thumbnailUrl}}"
+            mode="aspectFill"
+          ></image>
+          <view class="thumbnail-fallback" wx:else>
+            <text class="fallback-text">Lesson</text>
+          </view>
+        </view>
+
+        <!-- 中间内容 -->
+        <view class="card-content">
+          <text class="card-title">{{item.title}}</text>
+          <text class="card-subtitle">{{item.contentInfo}}</text>
+          <text class="card-meta">{{item.updateTime}}</text>
+        </view>
+
+        <!-- 右侧箭头 -->
+        <view class="card-chevron">
+          <text class="chevron-icon">›</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部空白 -->
+    <view class="bottom-spacing"></view>
+  </scroll-view>
+</view>

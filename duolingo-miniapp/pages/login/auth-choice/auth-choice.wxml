@@ -1,0 +1,26 @@
+<!-- Login Flow 2: Already Have Account / New to Duolingo - 选择登录或注册 -->
+<view class="page">
+  <!-- 后退按钮 -->
+  <view class="top-bar">
+    <text class="back-btn" bindtap="handleBack">←</text>
+  </view>
+
+  <!-- 已有账户部分 -->
+  <view class="section">
+    <text class="section-title">Already have an account?</text>
+    <view class="btn btn-primary" bindtap="handleSignIn">
+      <text class="btn-text">SIGN IN</text>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divider"></view>
+
+  <!-- 新用户部分 -->
+  <view class="section">
+    <text class="section-title">New to Duolingo?</text>
+    <view class="btn btn-secondary" bindtap="handleGetStarted">
+      <text class="btn-text">GET STARTED</text>
+    </view>
+  </view>
+</view>

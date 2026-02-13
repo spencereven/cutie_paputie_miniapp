@@ -1,0 +1,34 @@
+<!-- Login Flow 1: Sign Back In - 已有账户登录页 -->
+<view class="page">
+  <!-- 顶部 Duolingo 猫头鹰角色 -->
+  <view class="owl-section">
+    <view class="owl">🦉</view>
+  </view>
+
+  <!-- 标题 -->
+  <text class="page-title">Sign back in</text>
+
+  <!-- 账户卡片容器 -->
+  <view class="account-card-container">
+    <account-card
+      wx:for="{{savedAccounts}}"
+      wx:key="id"
+      name="{{item.name}}"
+      email="{{item.email}}"
+      avatarBg="{{item.avatarBg}}"
+      isSelected="{{selectedAccountId === item.id}}"
+      bind:select="handleSelectAccount"
+    ></account-card>
+
+    <!-- Add another account 选项 -->
+    <view class="add-account-row" bindtap="handleAddAccount">
+      <view class="add-avatar">
+        <text class="add-icon">+</text>
+      </view>
+      <text class="add-text">Add another account</text>
+    </view>
+  </view>
+
+  <!-- MANAGE ACCOUNTS 链接 -->
+  <text class="manage-text" bindtap="handleManageAccounts">MANAGE ACCOUNTS</text>
+</view>

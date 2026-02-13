@@ -1,0 +1,40 @@
+<!-- Duolingo Mini App - 首页 -->
+<view class="page">
+  <!-- 主容器 -->
+  <scroll-view class="main-container" scroll-y="true">
+    <!-- 用户欢迎信息 -->
+    <view class="welcome-row" wx:if="{{userName}}">
+      <text class="welcome-text">Hi, {{userName}}</text>
+    </view>
+
+    <!-- 单元横幅组件 -->
+    <unit-banner
+      sectionLabel="{{sectionLabel}}"
+      title="{{bannerTitle}}"
+      color-theme="{{bannerTheme}}"
+      bind:action="handleBannerAction"
+    ></unit-banner>
+
+    <!-- 课程列表 -->
+    <view class="levels-container">
+      <level-card
+        wx:for="{{levels}}"
+        wx:key="id"
+        id="{{item.id}}"
+        title="{{item.title}}"
+        subtitle="{{item.subtitle}}"
+        iconType="{{item.iconType}}"
+        iconContent="{{item.iconContent}}"
+        showLock="{{item.showLock}}"
+        bind:tap="handleLevelClick"
+        data-index="{{index}}"
+      ></level-card>
+    </view>
+  </scroll-view>
+
+  <!-- 底部导航组件 -->
+  <bottom-nav
+    activeTab="{{activeNav}}"
+    bind:navchange="handleNavChange"
+  ></bottom-nav>
+</view>

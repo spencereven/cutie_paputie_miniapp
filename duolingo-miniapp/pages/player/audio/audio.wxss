@@ -1,0 +1,302 @@
+/* Audio Player 样式 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+/* ============ 顶部导航栏 ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0 16px;
+  border-bottom: 1px solid #E6E6E6;
+  background-color: #ffffff;
+}
+
+.back-btn {
+  font-size: 24px;
+  color: #A0A0A0;
+  cursor: pointer;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1F1F1F;
+  flex: 1;
+  text-align: center;
+  margin: 0 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spacer {
+  width: 24px;
+}
+
+/* ============ 主要内容区域 ============ */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 32px 24px;
+}
+
+/* ============ 音频可视化 ============ */
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 120px;
+  margin-bottom: 32px;
+}
+
+.wave {
+  width: 4px;
+  height: 40px;
+  background: linear-gradient(180deg, #58CC02 0%, #5CB85C 100%);
+  border-radius: 2px;
+  animation: wave 0.6s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    height: 20px;
+  }
+  50% {
+    height: 80px;
+  }
+}
+
+/* ============ 音频信息 ============ */
+.audio-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.audio-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F1F1F;
+}
+
+.audio-subtitle {
+  font-size: 13px;
+  color: #A0A0A0;
+}
+
+/* ============ 进度条 ============ */
+.progress-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.time {
+  font-size: 12px;
+  color: #A0A0A0;
+  min-width: 40px;
+  text-align: center;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background-color: #E6E6E6;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #58CC02 0%, #5CB85C 100%);
+  border-radius: 3px;
+  position: relative;
+}
+
+.progress-thumb {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  background-color: #58CC02;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ============ 播放控制 ============ */
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.control-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:active {
+  opacity: 0.7;
+  transform: scale(0.95);
+}
+
+.control-icon {
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn.speed-btn .control-icon,
+.control-btn.download-btn .control-icon {
+  font-size: 32px;
+}
+
+.control-label {
+  font-size: 12px;
+  color: #A0A0A0;
+  font-weight: 600;
+}
+
+/* ============ 信息区域 ============ */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background-color: #FAFAFA;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1F1F1F;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.info-label {
+  font-size: 13px;
+  color: #A0A0A0;
+}
+
+.info-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1F1F1F;
+}
+
+/* ============ 相关内容 ============ */
+.related-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.related-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.related-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #E6E6E6;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.related-item:active {
+  background-color: #F9F9F9;
+}
+
+.related-number {
+  font-size: 16px;
+  font-weight: 700;
+  color: #58CC02;
+  min-width: 32px;
+}
+
+.related-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.related-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1F1F1F;
+}
+
+.related-meta {
+  font-size: 12px;
+  color: #A0A0A0;
+}
+
+.related-arrow {
+  font-size: 16px;
+  color: #A0A0A0;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 375px) {
+  .content {
+    padding: 24px 16px;
+  }
+
+  .audio-title {
+    font-size: 18px;
+  }
+
+  .control-icon {
+    font-size: 40px;
+  }
+
+  .control-btn.speed-btn .control-icon,
+  .control-btn.download-btn .control-icon {
+    font-size: 28px;
+  }
+
+  .info-section {
+    padding: 16px;
+  }
+}

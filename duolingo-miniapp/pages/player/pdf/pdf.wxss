@@ -1,0 +1,216 @@
+/* PDF Viewer 样式 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* ============ 顶部工具栏 ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0 16px;
+  border-bottom: 1px solid #E6E6E6;
+  background-color: #ffffff;
+}
+
+.back-btn {
+  font-size: 24px;
+  color: #A0A0A0;
+  cursor: pointer;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.title-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 16px;
+  text-align: center;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1F1F1F;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.page-number {
+  font-size: 11px;
+  color: #A0A0A0;
+}
+
+.spacer {
+  width: 24px;
+}
+
+/* ============ PDF容器 ============ */
+.pdf-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: #F5F5F5;
+  padding: 16px;
+}
+
+.pdf-preview {
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.pdf-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 24px;
+  min-height: 600px;
+  background-color: #ffffff;
+}
+
+.pdf-icon {
+  font-size: 48px;
+  text-align: center;
+}
+
+.pdf-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1F1F1F;
+  text-align: center;
+}
+
+.pdf-meta {
+  font-size: 12px;
+  color: #A0A0A0;
+  text-align: center;
+}
+
+.pdf-content {
+  font-size: 13px;
+  color: #5A5A5A;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* ============ 底部控制栏 ============ */
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 60px;
+  padding: 0 16px;
+  border-top: 1px solid #E6E6E6;
+  background-color: #ffffff;
+}
+
+/* ============ 页码导航 ============ */
+.page-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #E6E6E6;
+  border-radius: 6px;
+  background-color: #FAFAFA;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 18px;
+  color: #A0A0A0;
+}
+
+.nav-btn:active {
+  background-color: #F0F0F0;
+}
+
+.page-input {
+  width: 40px;
+  height: 32px;
+  border: 1px solid #E6E6E6;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 6px;
+}
+
+/* ============ 工具按钮 ============ */
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tool-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #E6E6E6;
+  border-radius: 6px;
+  background-color: #FAFAFA;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tool-btn:active {
+  background-color: #F0F0F0;
+}
+
+.tool-icon {
+  font-size: 16px;
+  color: #A0A0A0;
+}
+
+.zoom-level {
+  font-size: 12px;
+  color: #A0A0A0;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 375px) {
+  .pdf-page {
+    padding: 24px 16px;
+  }
+
+  .pdf-title {
+    font-size: 14px;
+  }
+
+  .pdf-content {
+    font-size: 12px;
+  }
+
+  .bottom-bar {
+    padding: 0 12px;
+    gap: 12px;
+  }
+}

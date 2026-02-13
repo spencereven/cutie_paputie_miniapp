@@ -1,0 +1,109 @@
+/* Sections List 样式 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+/* ============ 顶部标题栏 ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 24px;
+  border-bottom: 1px solid #E6E6E6;
+  background-color: #ffffff;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F1F1F;
+}
+
+.page-subtitle {
+  font-size: 12px;
+  color: #A0A0A0;
+}
+
+.close-btn {
+  font-size: 32px;
+  color: #A0A0A0;
+  cursor: pointer;
+  line-height: 1;
+  font-weight: 300;
+  width: 40px;
+  text-align: right;
+}
+
+.close-btn:active {
+  opacity: 0.6;
+}
+
+/* ============ 列表容器 ============ */
+.list-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ============ Section组 ============ */
+.section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.section-group:last-of-type {
+  border-bottom: none;
+  padding-bottom: 40px;
+}
+
+.group-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1F1F1F;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+/* ============ 卡片列表 ============ */
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ============ 底部空白 ============ */
+.list-bottom {
+  height: 40px;
+}
+
+@media (max-width: 375px) {
+  .top-bar {
+    padding: 0 16px;
+  }
+
+  .section-group {
+    padding: 16px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,21 @@
+<!-- 顶部指标组件 -->
+<view class="metrics-wrapper">
+  <view class="metric-group">
+    <view class="metric-item">
+      <text class="metric-icon">❤️</text>
+      <text class="metric-value">{{hearts}}</text>
+    </view>
+    <view class="metric-item">
+      <text class="metric-icon">🔥</text>
+      <text class="metric-value">{{streak}}</text>
+    </view>
+    <view class="metric-item">
+      <text class="metric-icon">💎</text>
+      <text class="metric-value">{{gems}}</text>
+    </view>
+    <view class="metric-item">
+      <text class="metric-icon">⚡</text>
+      <text class="metric-value">{{power}}</text>
+    </view>
+  </view>
+</view>

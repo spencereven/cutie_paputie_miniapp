@@ -1,0 +1,78 @@
+/* Input Card Component */
+
+.input-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #E6E6E6;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* 输入行 */
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  position: relative;
+}
+
+.input-row.first {
+  border-bottom: none;
+}
+
+.input-row.second {
+  border-top: 1px solid #E6E6E6;
+}
+
+/* 输入框字段 */
+.input-field {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5A5A5A;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.input-field::placeholder {
+  color: #D0D0D0;
+}
+
+/* 分割线 */
+.divider {
+  height: 1px;
+  background-color: #E6E6E6;
+  margin: 0;
+}
+
+/* 密码切换按钮 */
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* 响应式 */
+@media (max-width: 375px) {
+  .input-row {
+    gap: 10px;
+    padding: 14px 12px;
+  }
+
+  .input-field {
+    font-size: 13px;
+  }
+}
